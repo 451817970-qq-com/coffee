@@ -10,7 +10,6 @@
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers class="net.logstash.logback.composite.loggingevent.LoggingEventJsonProviders">
                 <pattern>
-                    <!--         "time":"%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ}", 收集-->
                     <pattern>
                         {
                         "time":"%d{yyyy-MM-dd'T'HH:mm:ss.SSS'Z'}",
@@ -30,9 +29,6 @@
 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
 			<level>INFO</level>
 		</filter>
-<!-- 		<encoder>
-			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
-		</encoder> -->
 		<encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers class="net.logstash.logback.composite.loggingevent.LoggingEventJsonProviders">
                 <pattern>
@@ -53,10 +49,25 @@
 			<fileNamePattern>/var/log/apps/web.%d{yyyy-MM-dd}.log</fileNamePattern>
 		</rollingPolicy>
 	</appender>
+	
+	<appender name="web2"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd'T'HH:mm:ss.SSS'Z'} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>	
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/var/log/apps2/web.%d{yyyy-MM-dd}.log</fileNamePattern>
+		</rollingPolicy>
+	</appender>
 
 	<root level="info">
 		<appender-ref ref="STDOUT" /> 
 		<appender-ref ref="web" />
+		<appender-ref ref="web2" />
 	</root>
 
 </configuration>

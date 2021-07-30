@@ -11,6 +11,7 @@ public class TestTask {
 
 	@Scheduled(cron = "0/5 * * * * ?")
 	public void test() {
-		log.info("测试定时任务...");
+		log.info("xx任务开始...");
+		log.info("xx任务结束...");
 	}
 }
