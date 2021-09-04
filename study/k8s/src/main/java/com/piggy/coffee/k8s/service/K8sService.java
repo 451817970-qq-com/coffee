@@ -49,8 +49,12 @@ public class K8sService {
 				.addNewVolumeMount().withName(K8sCsts.SEED_DIR).withMountPath(cPod.getSeedDirContainerPath())
 				.endVolumeMount()
 				//
-				.addNewCommand("bash").addNewCommand("-c")
-				.addNewCommand("while true; do echo \"hello aaa\"; sleep 3; done").withNewSecurityContext()
+				.addNewCommand("bash")
+				.addNewCommand("-c")
+				//.addNewCommand("while true; do echo \"hello aaa\"; sleep 3; done")
+				.addNewCommand("/xfuzz_work/scripts/start.sh")
+				//
+				.withNewSecurityContext()
 				.withPrivileged(true).editOrNewCapabilities().addToAdd("SYS_PTRACE").endCapabilities()
 				.endSecurityContext().endContainer();
 
