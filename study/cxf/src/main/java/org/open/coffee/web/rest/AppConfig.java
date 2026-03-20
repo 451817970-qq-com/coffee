@@ -29,7 +29,8 @@ public class AppConfig {
 	
 	
     @Bean  
-    public ServletRegistrationBean servletRegistrationBean() {  
+    public ServletRegistrationBean servletRegistrationBean() {   
+		ServletRegistrationBean<CXFServlet> b = new ServletRegistrationBean<>(new CXFServlet(), "/api/*");
         return new ServletRegistrationBean(new CXFServlet(), "/api/*");// ServletName默认值为首字母小写，即myServlet1  
     }  
 }

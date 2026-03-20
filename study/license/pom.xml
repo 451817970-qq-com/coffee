@@ -59,11 +59,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-		</dependency>
-
+		
 		<dependency>
 			<groupId>de.schlichtherle.truelicense</groupId>
 			<artifactId>truelicense-core</artifactId>
@@ -100,6 +96,6 @@
 
 	</dependencies>
 	<build>
-		<finalName>coffee-https</finalName>
+		<finalName>coffee-license</finalName>
 	</build>
 </project>

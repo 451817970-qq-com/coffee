@@ -5,8 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
-import com.piggy.coffee.jsplumb.web.filter.PathFilter;
-
 @Configuration
 public class WebConfig {
 
@@ -24,7 +22,7 @@ public class WebConfig {
 	@Bean
 	public FilterRegistrationBean registerPathFilter() {
 		FilterRegistrationBean filterRegBean = new FilterRegistrationBean();
-		filterRegBean.setFilter(new PathFilter());
+	//	filterRegBean.setFilter(new PathFilter());
 		filterRegBean.setName("pathFilter");
 		filterRegBean.addUrlPatterns("/*");
 		filterRegBean.setOrder(2);

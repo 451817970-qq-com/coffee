@@ -1,13 +1,12 @@
 package com.piggy.coffee.license.interceptor;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.piggy.coffee.license.mgr.LicenseMgr;
+
+import jakarta.servlet.http.*;
 
 public class LicenseInterceptor implements HandlerInterceptor {
 

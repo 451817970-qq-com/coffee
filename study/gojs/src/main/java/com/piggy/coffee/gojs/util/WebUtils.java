@@ -1,6 +1,6 @@
 package com.piggy.coffee.gojs.util;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 public class WebUtils {
 
