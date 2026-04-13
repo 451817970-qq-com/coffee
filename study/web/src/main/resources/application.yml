@@ -1,0 +1,23 @@
+server: 
+  port: 8081
+
+spring:
+  threads:
+    virtual:
+      enabled: true # 配合 Hikari 极大提升高并发下的吞吐量
+
+spring:
+  datasource:
+    hikari:
+      maximum-pool-size: 20 # 根据 CPU 核心数调整，通常为 core * 2 + 1
+      minimum-idle: 5
+      idle-timeout: 600000
+      connection-timeout: 30000
+      # 必须小于数据库服务器的 wait_timeout（通常 MySQL 是 8 小时，建议设为 30 分钟）
+      max-lifetime: 1800000 
+      # 连接测试超时
+      validation-timeout: 5000
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/your_db?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: your_password

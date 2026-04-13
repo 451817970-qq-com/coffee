@@ -16,10 +16,10 @@ import com.piggy.coffee.k8s.util.K8sUtils;
 import io.fabric8.kubernetes.api.model.NodeList;
 import io.fabric8.kubernetes.api.model.Pod;
 import io.fabric8.kubernetes.api.model.PodBuilder;
-import io.fabric8.kubernetes.api.model.PodFluent.SpecNested;
+import io.fabric8.kubernetes.api.model.PodFluent;
 import io.fabric8.kubernetes.api.model.metrics.v1beta1.NodeMetricsList;
 import io.fabric8.kubernetes.client.KubernetesClient;
-import io.fabric8.kubernetes.client.MetricAPIGroupClient;
+import io.fabric8.kubernetes.client.impl.MetricAPIGroupClient;
 
 @Service
 public class K8sService {
@@ -35,7 +35,7 @@ public class K8sService {
 				.addToAnnotations("seccomp.security.alpha.kubernetes.io/pod", "unconfined").endMetadata();
 
 		// container
-		SpecNested<PodBuilder> specNested = pb.withNewSpec().addNewContainer()
+		PodFluent<?>.SpecNested<PodBuilder> specNested = pb.withNewSpec().addNewContainer()
 				.withName(K8sUtils.buildContainerName(cPod.getContainerName())).withImage(cPod.getImage())
 				.withResources(null)
 				//
@@ -49,10 +49,7 @@ public class K8sService {
 				.addNewVolumeMount().withName(K8sCsts.SEED_DIR).withMountPath(cPod.getSeedDirContainerPath())
 				.endVolumeMount()
 				//
-				.addNewCommand("bash")
-				.addNewCommand("-c")
-				//.addNewCommand("while true; do echo \"hello aaa\"; sleep 3; done")
-				.addNewCommand("/xfuzz_work/scripts/start.sh")
+				.addToCommand("bash", "-c", "/xfuzz_work/scripts/start.sh")
 				//
 				.withNewSecurityContext()
 				.withPrivileged(true).editOrNewCapabilities().addToAdd("SYS_PTRACE").endCapabilities()
@@ -64,9 +61,9 @@ public class K8sService {
 		specNested.addNewVolume().withName(K8sCsts.SEED_DIR).withNewHostPath(cPod.getSeedDirHostPath(), null)
 				.endVolume();
 
-		Pod pod = specNested.withNewRestartPolicy("Always").endSpec().build();
+		Pod pod = specNested.withRestartPolicy("Always").endSpec().build();
 
-		client.pods().inNamespace(cPod.getNamespace()).create(pod);
+		client.pods().inNamespace(cPod.getNamespace()).resource(pod).create();
 
 	}
 
@@ -104,8 +101,7 @@ public class K8sService {
 	// metrics start ...
 
 	public NodeMetricsList getNodeMetrics() {
-		MetricAPIGroupClient mClient = K8sClientUtils.getMetricsClient(k8sClientConfig);
-		NodeMetricsList nmList = mClient.nodes().metrics();
+		NodeMetricsList nmList = K8sClientUtils.getClient(k8sClientConfig).top().nodes().metrics();
 		return nmList;
 	}
 

@@ -8,7 +8,6 @@ import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.DelegatingFilterProxy;
 
 import com.piggy.coffee.web.filter.InjectionAttackFilter;
@@ -31,17 +30,6 @@ public class CoffeeWebApplication {
 		listenerRegBean.setOrder(1);
 
 		return listenerRegBean;
-	}
-	
-	@Bean
-	public FilterRegistrationBean<CharacterEncodingFilter> registerFilter1() {
-		FilterRegistrationBean<CharacterEncodingFilter> filterRegBean = new FilterRegistrationBean<CharacterEncodingFilter>();
-		filterRegBean.setFilter(new CharacterEncodingFilter());
-		filterRegBean.setName("characterEncodingFilter");
-		filterRegBean.addUrlPatterns("/*");
-		filterRegBean.setOrder(1);
-
-		return filterRegBean;
 	}
 	
 	@Bean

@@ -7,8 +7,6 @@ import java.util.TreeSet;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
-import com.piggy.coffee.common.util.io.FileUtils;
-
 public class FileUtilsTest {
 
 	@Test

@@ -7,55 +7,20 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
-	</properties>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-					<encoding>UTF-8</encoding>
-					<verbose>true</verbose>
-					<fork>true</fork>
-					<executable><!-- path-to-javac -->
-					</executable>
-					<compilerVersion>1.3</compilerVersion>
-				</configuration>
-			</plugin>
-
-
-		</plugins>
-	</build>
-
-
 	<modules>	
 		<module>parent</module>
 		
 		<module>common-jars/common</module>
-		<module>common-jars/model</module>	
 		<module>common-jars/aviator</module>	
-		<module>common-jars/detection</module>	
 		
 		<module>study/designpattern</module>
-		<module>study/syntax</module>
 				
 		<module>study/jwt</module>
 		<module>study/mybatisg</module>
 
-		
-		<module>study/cxf</module>
 		<module>study/web</module>
 		<module>study/https</module>
 		<module>study/websocket</module>
-
-		<module>study/gojs</module>
-		<module>study/jsPlumb</module>
 		
 		<module>study/k8s</module>
 		<module>study/k8sclient</module>
@@ -63,9 +28,12 @@
 		
 		
 		<module>study/logtool</module>
-		<module>study/deadcycle</module>
 		<module>study/compiler</module>
 		
 		<module>study/license</module>
+		
+		<module>study/redis</module>
+		
+		<module>study/qrcode</module>
 	</modules>
 </project>

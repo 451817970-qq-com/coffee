@@ -57,7 +57,7 @@ public class ExecTest3 extends ClientTest {
 
 		} catch (IOException e) {// 执行繁忙
 			logger.error("执行繁忙", e);
-		} catch (Exception e) {// TODO 可能因为读取不及时
+		} catch (Exception e) {
 			logger.error("读取不及时", e);
 		}
 

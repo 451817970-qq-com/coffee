@@ -23,47 +23,21 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
-
 		<!-- Ordinary dependencies -->
 		<!-- spring cloud -->
-		<cloud.version>Edgware.SR4</cloud.version>
-		<!-- -->
-		<jackson.version>2.9.3</jackson.version>
-		<cxf.version>4.1.3</cxf.version>
-		<jax.ws.rs>2.0.1</jax.ws.rs>
-		<taglibs.version>1.1.2</taglibs.version>
+		<cloud.version>2025.0.1</cloud.version>
 		<!-- data -->
-		<mybatis-starter.version>1.3.0</mybatis-starter.version>
-		<dhcp2.version>2.1.1</dhcp2.version>
-		<mysql.version>6.0.5</mysql.version>
-		<!-- tool -->
-		<commons-lang3.version>3.7</commons-lang3.version>
-		<commons-io.version>2.6</commons-io.version>
-		<commons-fileupload.version>1.3.2</commons-fileupload.version>
-
+		<mybatis-starter.version>3.0.4</mybatis-starter.version>
+		<!-- lombok -->
+		<lombok.version>1.18.30</lombok.version>
 		<!-- -->
 		<aviator.version>5.1.0</aviator.version>
-
-		<!-- log -->
-		<slf4j.version>1.7.25</slf4j.version>
-		<logback.version>1.4.11</logback.version>
-
-		<!-- Testing dependencies -->
-		<junit.version>4.12</junit.version>
-		<jmockit.version>1.33</jmockit.version>
-		<mockito-core.version>2.13.0</mockito-core.version>
-
-		<!-- Testing plugin -->
-		<cobertura.plugin.version>2.7</cobertura.plugin.version>
-		<surefire.version>2.18.1</surefire.version>
-		<plantuml.version>6121</plantuml.version>
-		<ant.version>1.8.4</ant.version>
-		<includedTestGroups />
-		<excludedTestGroups>Integration,Acceptance,Live,WIP</excludedTestGroups>
-		<surefire.failIfNoSpecifiedTests>false</surefire.failIfNoSpecifiedTests>
+		<!-- -->
+		<commons-io.version>2.18.0</commons-io.version>
+		<cxf.version>4.1.5</cxf.version>
+		<jax.ws.rs>2.0.1</jax.ws.rs>
+		<taglibs.version>1.1.2</taglibs.version>
 	</properties>
-
 
 	<dependencyManagement>
 		<dependencies>
@@ -76,47 +50,16 @@
 			</dependency>
 
 			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-databind</artifactId>
-				<version>${jackson.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.fasterxml.jackson.module</groupId>
-				<artifactId>jackson-module-jaxb-annotations</artifactId>
-				<version>${jackson.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>taglibs</groupId>
-				<artifactId>standard</artifactId>
-				<version>${taglibs.version}</version>
-			</dependency>
-
-
-			<dependency>
 				<groupId>org.mybatis.spring.boot</groupId>
 				<artifactId>mybatis-spring-boot-starter</artifactId>
 				<version>${mybatis-starter.version}</version>
 			</dependency>
 
-
 			<dependency>
-				<groupId>org.apache.commons</groupId>
-				<artifactId>commons-lang3</artifactId>
-				<version>${commons-lang3.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>commons-io</groupId>
-				<artifactId>commons-io</artifactId>
-				<version>${commons-io.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>commons-fileupload</groupId>
-				<artifactId>commons-fileupload</artifactId>
-				<version>${commons-fileupload.version}</version>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<scope>provided</scope>
 			</dependency>
 
 			<dependency>
@@ -126,43 +69,16 @@
 			</dependency>
 
 			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>${slf4j.version}</version>
+				<groupId>taglibs</groupId>
+				<artifactId>standard</artifactId>
+				<version>${taglibs.version}</version>
 			</dependency>
-
-			<dependency>
-				<groupId>ch.qos.logback</groupId>
-				<artifactId>logback-classic</artifactId>
-				<version>${logback.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>${junit.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.jmockit</groupId>
-				<artifactId>jmockit</artifactId>
-				<version>${jmockit.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.mockito</groupId>
-				<artifactId>mockito-core</artifactId>
-				<version>${mockito-core.version}</version>
-			</dependency>
-
 		</dependencies>
 
 	</dependencyManagement>
 
 	<build>
-		<plugins>
-		
-		</plugins>
+		<plugins></plugins>
 
 	</build>
 
